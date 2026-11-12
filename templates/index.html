@@ -1,1 +1,56 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090b12">
+  <meta name="description" content="Optimalkan video untuk WhatsApp Status dengan StoryHD. Upload, proses, preview, dan unduh video MP4.">
+  <title>StoryHD — WhatsApp Video Optimizer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body data-max-file-bytes="{{ max_mb * 1024 * 1024 }}">
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar shell">
+    <a class="brand" href="/" aria-label="StoryHD beranda"><span class="brand-mark">S</span><span>story<span class="brand-accent">hd</span></span></a>
+    <span class="top-pill"><i></i> VIDEO OPTIMIZER</span>
+  </header>
 
+  <main class="shell main-content">
+    <section class="hero">
+      <div class="eyebrow"><span class="eyebrow-line"></span> WHATSAPP STATUS ENHANCER</div>
+      <h1>Video tetap <span>tajam.</span><br>Story lebih maksimal.</h1>
+      <p class="hero-copy">Optimalkan video sebelum diunggah ke WhatsApp Status. Jaga resolusi, detail, dan kompatibilitas tanpa mengubah rasio aslinya.</p>
+      <div class="trust-row"><span><b class="check">✓</b> Tanpa watermark</span><span><b class="check">✓</b> Rasio tetap terjaga</span><span><b class="check">✓</b> MP4 siap diunduh</span></div>
+    </section>
+
+    <section class="workspace" aria-label="Pengolah video">
+      <div class="section-heading"><div><div class="step-label">01 <span>· UPLOAD</span></div><h2>Mulai dengan videomu</h2></div><div class="format-chip">MP4 <span>·</span> MOV <span>·</span> M4V</div></div>
+      <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Pilih atau letakkan video di sini">
+        <input id="videoInput" type="file" accept="video/mp4,video/quicktime,video/x-m4v,.mp4,.mov,.m4v" hidden>
+        <div class="upload-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M4 16.5v2A1.5 1.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5v-2"/></svg></div>
+        <h3>Letakkan video di sini</h3><p>atau <button class="text-button" id="browseButton" type="button">pilih dari galeri</button></p>
+        <div class="upload-limit">Maksimal {{ max_mb }} MB · Durasi maksimal {{ max_minutes }} menit</div>
+      </div>
+
+      <div class="selected-file hidden" id="selectedFile"><div class="file-icon">MP4</div><div class="file-meta"><strong id="fileName">video.mp4</strong><span id="fileInfo">0 MB</span></div><button class="remove-button" id="removeFile" type="button" aria-label="Hapus video">×</button></div>
+      <div class="preview-grid hidden" id="previewGrid"><div class="preview-card"><div class="preview-label">PREVIEW VIDEO</div><video id="inputPreview" controls playsinline></video></div><div class="preview-card info-card"><div class="preview-label">INFO SUMBER</div><div class="info-list" id="sourceInfo"></div></div></div>
+
+      <button class="primary-button" id="processButton" type="button" disabled><span class="button-icon">✦</span> Optimalkan Video <span class="button-arrow">↗</span></button>
+      <p class="privacy-note"><span class="lock">▣</span> Video diproses sementara dan dijadwalkan terhapus otomatis setelah 30 menit.</p>
+
+      <div class="progress-panel hidden" id="progressPanel"><div class="progress-top"><strong id="progressTitle">Mengunggah video…</strong><span id="progressPercent">0%</span></div><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><p id="progressMessage">Menyiapkan file untuk diproses.</p></div>
+      <div class="error-box hidden" id="errorBox" role="alert"></div>
+
+      <section class="result-panel hidden" id="resultPanel"><div class="result-heading"><div><div class="step-label">02 <span>· SELESAI</span></div><h2>Video siap diunduh</h2></div><span class="success-tag">✓ BERHASIL</span></div><video id="outputPreview" controls playsinline></video><div class="comparison" id="comparison"></div><a class="download-button" id="downloadButton" href="#"><span>↓</span> Download video MP4</a><p class="result-tip">Setelah diunduh, unggah file ini ke WhatsApp Status. WhatsApp masih dapat melakukan kompresi saat upload.</p></section>
+    </section>
+
+    <section class="how-section"><div class="section-heading"><div><div class="step-label">02 <span>· CARA KERJA</span></div><h2>Tiga langkah sederhana</h2></div></div><div class="steps"><article><span>01</span><h3>Upload</h3><p>Pilih video dari galeri HP atau komputer.</p></article><article><span>02</span><h3>Optimalkan</h3><p>Server menyiapkan MP4 H.264 dengan kualitas tinggi dan ukuran yang sesuai.</p></article><article><span>03</span><h3>Download</h3><p>Simpan hasilnya, lalu unggah sendiri ke Status WhatsApp.</p></article></div></section>
+    <section class="notice"><span class="notice-mark">i</span><p><strong>Perlu diketahui:</strong> StoryHD mengoptimalkan file sebelum diunggah. Website pihak ketiga tidak dapat menonaktifkan kompresi yang dilakukan WhatsApp setelah video dikirim ke Status.</p></section>
+  </main>
+  <footer class="shell footer"><span>© <span id="year"></span> STORYHD</span><span>Made for clearer stories.</span></footer>
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body>
+</html>
