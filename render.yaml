@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: storyhd
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: MAX_FILE_BYTES
+        value: "314572800"
+      - key: MAX_DURATION_SECONDS
+        value: "180"
+      - key: JOB_TTL_SECONDS
+        value: "1800"
+      - key: PROCESSING_WORKERS
+        value: "2"
+      - key: MAX_ACTIVE_JOBS
+        value: "4"
